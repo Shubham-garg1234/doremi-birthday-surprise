@@ -18,41 +18,56 @@ const Index = () => {
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-20 bg-cover bg-center"
+          className="absolute inset-0 opacity-30 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background" />
         
-        <div className="relative container mx-auto px-4 py-16 md:py-24">
-          <div className="text-center mb-12 animate-fade-in">
-            <div className="floating inline-block mb-4">
+        <div className="relative container mx-auto px-4 py-12 md:py-20">
+          {/* Doremi Character - More Prominent */}
+          <div className="flex justify-center mb-8">
+            <div className="floating inline-block">
               <img
                 src={doremiImage}
-                alt="Doremi"
-                className="w-32 h-32 md:w-40 md:h-40 mx-auto drop-shadow-2xl"
+                alt="Doremi from Doraemon"
+                className="w-40 h-40 md:w-56 md:h-56 mx-auto drop-shadow-2xl hover:scale-110 transition-transform duration-300"
               />
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold gradient-text mb-4 animate-scale-in">
+          </div>
+
+          {/* Main Heading */}
+          <div className="text-center mb-12 animate-fade-in">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold gradient-text mb-4 animate-scale-in drop-shadow-lg">
               Happy Birthday! 🎉
             </h1>
-            <p className="text-xl md:text-2xl text-secondary font-medium">
+            <p className="text-2xl md:text-3xl text-secondary font-semibold drop-shadow-md">
               To someone truly special ✨
             </p>
           </div>
 
+          {/* Countdown */}
           <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <CountdownTimer />
           </div>
         </div>
       </div>
 
+      {/* Floating Doremi on the side */}
+      <div className="fixed bottom-8 right-8 z-10 hidden lg:block">
+        <img
+          src={doremiImage}
+          alt="Doremi"
+          className="w-24 h-24 drop-shadow-2xl floating opacity-80 hover:opacity-100 transition-opacity"
+        />
+      </div>
+
       {/* Decorative Separator */}
       <div className="relative py-8">
         <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t-2 border-primary/20"></div>
+          <div className="w-full border-t-2 border-primary/30"></div>
         </div>
         <div className="relative flex justify-center">
-          <span className="bg-background px-6 text-4xl floating">🎂</span>
+          <span className="bg-background px-6 text-5xl floating shadow-lg">🎂</span>
         </div>
       </div>
 
@@ -64,10 +79,10 @@ const Index = () => {
       {/* Decorative Separator */}
       <div className="relative py-8">
         <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t-2 border-primary/20"></div>
+          <div className="w-full border-t-2 border-primary/30"></div>
         </div>
         <div className="relative flex justify-center">
-          <span className="bg-background px-6 text-4xl float-delayed">📸</span>
+          <span className="bg-background px-6 text-5xl float-delayed shadow-lg">📸</span>
         </div>
       </div>
 
@@ -76,19 +91,25 @@ const Index = () => {
         <PhotoGallery />
       </div>
 
-      {/* Footer */}
-      <div className="container mx-auto px-4 py-12 text-center">
-        <div className="floating inline-block mb-4">
+      {/* Footer with Doremi */}
+      <div className="container mx-auto px-4 py-16 text-center">
+        <div className="floating inline-block mb-6">
           <img
             src={doremiImage}
-            alt="Doremi"
-            className="w-20 h-20 mx-auto drop-shadow-xl opacity-80"
+            alt="Doremi from Doraemon"
+            className="w-24 h-24 md:w-32 md:h-32 mx-auto drop-shadow-2xl opacity-90"
           />
         </div>
-        <p className="text-lg text-muted-foreground mb-2">
+        <p className="text-xl md:text-2xl text-muted-foreground mb-4 font-medium">
           Made with 💝 for your special day
         </p>
-        <p className="text-4xl">🎈 🎉 🎂 ✨ 🎁</p>
+        <div className="flex justify-center gap-4 text-5xl">
+          <span className="floating">🎈</span>
+          <span className="float-delayed">🎉</span>
+          <span className="floating" style={{ animationDelay: "0.5s" }}>🎂</span>
+          <span className="float-delayed" style={{ animationDelay: "0.7s" }}>✨</span>
+          <span className="floating" style={{ animationDelay: "0.9s" }}>🎁</span>
+        </div>
       </div>
     </div>
   );

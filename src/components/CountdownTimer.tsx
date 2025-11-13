@@ -46,24 +46,34 @@ const CountdownTimer = () => {
         newTimeLeft.days === 0 &&
         newTimeLeft.hours === 0 &&
         newTimeLeft.minutes === 0 &&
-        newTimeLeft.seconds === 0
+        newTimeLeft.seconds === 0 &&
+        !isBirthday
       ) {
         setIsBirthday(true);
       }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isBirthday]);
 
   if (isBirthday) {
     return (
-      <div className="text-center py-12 animate-scale-in">
-        <h2 className="text-6xl font-bold gradient-text mb-4 animate-bounce">
-          🎉 Happy 22nd Birthday! 🎉
-        </h2>
-        <p className="text-2xl text-secondary animate-fade-in">
-          Today is your special day! 🎂✨
-        </p>
+      <div className="text-center py-16 animate-scale-in">
+        <div className="mb-6">
+          <h2 className="text-5xl md:text-7xl font-bold gradient-text mb-4 animate-bounce">
+            🎉 Happy 22nd Birthday! 🎉
+          </h2>
+          <p className="text-2xl md:text-3xl text-secondary animate-fade-in">
+            Today is your special day! 🎂✨
+          </p>
+        </div>
+        <div className="flex justify-center gap-4 text-4xl">
+          <span className="floating">🎈</span>
+          <span className="float-delayed">🎁</span>
+          <span className="floating" style={{ animationDelay: "0.5s" }}>🎊</span>
+          <span className="float-delayed" style={{ animationDelay: "0.7s" }}>🎉</span>
+          <span className="floating" style={{ animationDelay: "0.9s" }}>✨</span>
+        </div>
       </div>
     );
   }
@@ -90,7 +100,7 @@ const CountdownTimer = () => {
         {timeUnits.map((unit, index) => (
           <Card
             key={unit.label}
-            className="p-6 backdrop-blur-sm bg-card/80 border-2 border-primary/20 hover:border-primary/40 transition-all floating"
+            className="p-6 backdrop-blur-sm bg-card/80 border-2 border-primary/20 hover:border-primary/40 transition-all floating hover:shadow-2xl"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="text-5xl md:text-6xl font-bold gradient-text mb-2">
