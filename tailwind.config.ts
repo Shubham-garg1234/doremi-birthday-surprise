@@ -57,6 +57,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        birthday: {
+          pink: "hsl(var(--birthday-pink))",
+          coral: "hsl(var(--birthday-coral))",
+          gold: "hsl(var(--birthday-gold))",
+          light: "hsl(var(--birthday-light))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
