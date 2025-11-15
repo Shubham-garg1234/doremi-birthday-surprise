@@ -1,27 +1,31 @@
 import { Card } from "@/components/ui/card";
+import story25 from "@/assets/41.jpeg";
+import story26 from "@/assets/42.jpeg";
+import story31 from "@/assets/43.jpeg";
+import story32 from "@/assets/44.jpeg";
 
 const PhotoGallery = () => {
   // Placeholder for photos - you can add your own images here
   const photos = [
     {
       id: 1,
-      alt: "Memory 1",
-      caption: "Beautiful moments together",
+      alt: story25,
+      caption: "Awwww sooo cuteeeee!!",
     },
     {
       id: 2,
-      alt: "Memory 2",
-      caption: "Adventures and laughter",
+      alt: story26,
+      caption: "hehe",
     },
     {
       id: 3,
-      alt: "Memory 3",
-      caption: "Special times we shared",
+      alt: story31,
+      caption: "Movieeee yayyyy",
     },
     {
       id: 4,
-      alt: "Memory 4",
-      caption: "Making memories",
+      alt: story32,
+      caption: "Bhaang emmh emmh",
     },
   ];
 
@@ -45,7 +49,7 @@ const PhotoGallery = () => {
           >
             <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center relative overflow-hidden">
               <div className="text-6xl filter grayscale-0 group-hover:scale-110 transition-transform duration-300">
-                🖼️
+                < img src= {photo.alt}></img>
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
@@ -53,17 +57,11 @@ const PhotoGallery = () => {
               <p className="text-center text-foreground font-medium">
                 {photo.caption}
               </p>
-              <p className="text-center text-sm text-muted-foreground mt-1">
-                Add your special photo here
-              </p>
             </div>
           </Card>
         ))}
       </div>
 
-      <div className="text-center text-sm text-muted-foreground italic max-w-2xl mx-auto mt-8 p-4 bg-birthday-light/50 rounded-lg">
-        💡 Tip: Replace the placeholder emojis with your actual photos by updating the PhotoGallery component
-      </div>
     </div>
   );
 };

@@ -65,10 +65,6 @@ const QuestionGate = ({ onCorrectAnswer }: QuestionGateProps) => {
               </Button>
             </form>
           </div>
-
-          <p className="text-sm text-muted-foreground italic">
-            Hint: The answer is somewhere in between... 💭
-          </p>
         </div>
       </Card>
     </div>

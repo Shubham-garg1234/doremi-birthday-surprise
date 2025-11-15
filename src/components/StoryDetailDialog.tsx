@@ -11,7 +11,6 @@ interface StoryDetail {
   icon: string;
   fullStory: string;
   images: string[];
-  moments: string[];
 }
 
 interface StoryDetailDialogProps {
@@ -59,24 +58,6 @@ const StoryDetailDialog = ({ story, open, onOpenChange }: StoryDetailDialogProps
                   />
                 </div>
               ))}
-            </div>
-
-            {/* Special Moments List */}
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
-                <span>✨</span> Favorite Moments
-              </h3>
-              <div className="grid gap-3">
-                {story.moments.map((moment, index) => (
-                  <div
-                    key={index}
-                    className="p-4 bg-birthday-light/50 rounded-lg border-l-4 border-primary/40 hover:border-primary transition-colors float-delayed"
-                    style={{ animationDelay: `${index * 0.15}s` }}
-                  >
-                    <p className="text-foreground">{moment}</p>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </ScrollArea>

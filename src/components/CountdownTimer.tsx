@@ -8,20 +8,24 @@ interface TimeLeft {
   seconds: number;
 }
 
-const CountdownTimer = () => {
+interface CountdownTimerProps {
+  onTimerEnd: () => void;
+}
+
+const CountdownTimer = ({ onTimerEnd }: CountdownTimerProps) => {
   // FOR TESTING: 3 seconds from now
   const calculateTestEndTime = () => {
     const now = new Date();
     return new Date(now.getTime() + 3000); // 3 seconds
   };
 
-  // FOR ACTUAL BIRTHDAY: Uncomment the line below and comment out the test line
-  // const birthdayDate = new Date("2025-11-16T00:00:00");
-  const birthdayDate = calculateTestEndTime(); // COMMENT THIS LINE FOR PRODUCTION
+  // FOR REAL BIRTHDAY:
+  const birthdayDate = new Date("2025-11-16T00:00:00");
+  // const birthdayDate = calculateTestEndTime(); 
 
   const calculateTimeLeft = (): TimeLeft => {
     const difference = +birthdayDate - +new Date();
-    
+
     if (difference > 0) {
       return {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -30,7 +34,7 @@ const CountdownTimer = () => {
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
-    
+
     return { days: 0, hours: 0, minutes: 0, seconds: 0 };
   };
 
@@ -41,7 +45,7 @@ const CountdownTimer = () => {
     const timer = setInterval(() => {
       const newTimeLeft = calculateTimeLeft();
       setTimeLeft(newTimeLeft);
-      
+
       if (
         newTimeLeft.days === 0 &&
         newTimeLeft.hours === 0 &&
@@ -50,23 +54,16 @@ const CountdownTimer = () => {
         !isBirthday
       ) {
         setIsBirthday(true);
+        onTimerEnd();  // ⬅️ Trigger parent when time is up
       }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isBirthday]);
+  }, [isBirthday, onTimerEnd]);
 
   if (isBirthday) {
     return (
       <div className="text-center py-16 animate-scale-in">
-        <div className="mb-6">
-          <h2 className="text-5xl md:text-7xl font-bold gradient-text mb-4 animate-bounce">
-            🎉 Happy 22nd Birthday! 🎉
-          </h2>
-          <p className="text-2xl md:text-3xl text-secondary animate-fade-in">
-            Today is your special day! 🎂✨
-          </p>
-        </div>
         <div className="flex justify-center gap-4 text-4xl">
           <span className="floating">🎈</span>
           <span className="float-delayed">🎁</span>
@@ -87,14 +84,9 @@ const CountdownTimer = () => {
 
   return (
     <div className="text-center space-y-8">
-      <div>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-          Countdown to Your Special Day
-        </h2>
-        <p className="text-xl text-muted-foreground">
-          November 16, 2025 • Turning 22 🎂
-        </p>
-      </div>
+      <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+        Countdown to Your Special Day
+      </h2>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
         {timeUnits.map((unit, index) => (
